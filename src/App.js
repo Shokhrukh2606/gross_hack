@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, Suspense } from 'react';
+import { Route,  Switch, Router } from 'react-router-dom';
+import Aux from "./hoc/_Aux";
+import routes from "./routes";
+import Preloader from './components/Preloader'
+import {history} from './helpers/history'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const MainLayout = React.lazy(() => import('./containers/MainLayout'));
+
+
+const App=()=>{
+     const menu = routes.map((route, index) => {
+        return (route.component) ? (
+            <Route
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                name={route.name}
+                render={props => (
+                    <route.component {...props} />
+                )} />
+        ) : (null);
+      });
+       return (
+      <Router history={history} >
+        <React.Suspense fallback={<Preloader/>}>
+          <Switch>
+            <Route  path="/" name="Main Page" render={props => <MainLayout {...props} />} />
+          </Switch>
+        </React.Suspense>
+      </Router>
+    );
+      
 }
 
 export default App;
+
