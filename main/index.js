@@ -1,11 +1,11 @@
 const {app, BrowserWindow, ipcMain,Notification } = require('electron');
-const { beneficiar_create, beneficiar_list} = require('./controllers/beneficiar_controller.js');
-const { insurant_create, insurant_list} = require('./controllers/insurant_controller.js');
-const {transport_create}=require("./controllers/transport_controller.js");
-const {load_objects} = require("./controllers/premiya_controller.js");
-const {login,set_local_password,local_password_init, check_local_pass} = require('./controllers/user_controller.js');
-const {create}=require("./controllers/contract_controller.js");
+// const { insurant_create, insurant_list} = require('./controllers/insurant_controller.js');
+// const {transport_create}=require("./controllers/transport_controller.js");
+// const {load_objects} = require("./controllers/premiya_controller.js");
+// const {login,set_local_password,local_password_init, check_local_pass} = require('./controllers/user_controller.js');
+// const {create}=require("./controllers/contract_controller.js");
 const dns=require('dns');
+const { client_create } = require('./controllers/client_controller.js');
 var internet=false;
 
 var mainWindow;
@@ -42,51 +42,52 @@ app.on('activate', () => {
 //listener abdumalik
 
 ipcMain.on('login', (event, arg) => {
-  login(arg, mainWindow);
+  console.log('hello')
+  // login(arg, mainWindow);
 });
 
-ipcMain.on('set_local_password', (event, user_id, local_password) => {
-  set_local_password(user_id, local_password,mainWindow );
-});
+// ipcMain.on('set_local_password', (event, user_id, local_password) => {
+//   set_local_password(user_id, local_password,mainWindow );
+// });
 
-ipcMain.on('local_password_init', (event) => {
-  local_password_init(event, mainWindow);
-});
+// ipcMain.on('local_password_init', (event) => {
+//   local_password_init(event, mainWindow);
+// });
 
-ipcMain.on('check_local_pass', (event, credentials) => {
-  check_local_pass(event, credentials, mainWindow);
-});
+// ipcMain.on('check_local_pass', (event, credentials) => {
+//   check_local_pass(event, credentials, mainWindow);
+// });
 
-ipcMain.on('contract_create', (event, payload) => {
-  create(event, payload, mainWindow);
-});
+// ipcMain.on('contract_create', (event, payload) => {
+//   create(event, payload, mainWindow);
+// });
 
-ipcMain.on('beneficiar_list', (event) => {
-  beneficiar_list(event, mainWindow);
-});
+// ipcMain.on('beneficiar_list', (event) => {
+//   beneficiar_list(event, mainWindow);
+// });
 
-ipcMain.on('insurant_list', (event) => {
-  insurant_list(event, mainWindow);
-});
+// ipcMain.on('insurant_list', (event) => {
+//   insurant_list(event, mainWindow);
+// });
 
-ipcMain.on('transport_create', (event, args, contract_id) => {
-  transport_create(event, args, contract_id);
-});
+// ipcMain.on('transport_create', (event, args, contract_id) => {
+//   transport_create(event, args, contract_id);
+// });
 
 
-ipcMain.on('load_objects', (event, contract_id) => {
-  load_objects(event, contract_id);
-});
+// ipcMain.on('load_objects', (event, contract_id) => {
+//   load_objects(event, contract_id);
+// });
 
 
 
 // Shoh functions
-ipcMain.on('beneficiar_create', (event,came) => {
-  beneficiar_create(came, mainWindow)
+ipcMain.on('client_create', (event,came) => {
+  client_create(came, mainWindow)
 });
-ipcMain.on('insurant_create', (event, came) => {
-  insurant_create(came, mainWindow)
-});
+// ipcMain.on('insurant_create', (event, came) => {
+//   insurant_create(came, mainWindow)
+// });
 // Shoh functions
 
 

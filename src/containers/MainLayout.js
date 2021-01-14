@@ -1,11 +1,15 @@
 import React from 'react'
-import { Button } from 'reactstrap';
+import { Button, Container } from 'reactstrap';
 import Navbar from './Navbar'
+import List from '../modules/Client/List'
+
 const MainLayout=()=>{
 	return (
 			<div>
-			// <Navbar />
-			
+			<Navbar />
+			<Container>
+				<List />
+			</Container>
 			</div>
 		)
 }

@@ -1,13 +1,12 @@
 const { Sequelize, DataTypes } = require('sequelize');
-
+// const Beneficiar = require('./Beneficiar.js');
 const sequelize = new Sequelize({
     dialect: 'sqlite',
     storage: './database.sqlite3'
 })
 
 
-const Beneficiar = sequelize.define('Beneficiar', {
-
+const Client = sequelize.define('Client', {
     TB_REZIDENT: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
@@ -117,10 +116,62 @@ const Beneficiar = sequelize.define('Beneficiar', {
         type: DataTypes.STRING,
         allowNull: false
     }
-});
-
-
-Beneficiar.sync();
-
-
-module.exports = Beneficiar;
+    // "TB_ORGINN": 303442183,
+    // "TB_SURNAME": null,
+    // "TB_NAME": null,
+    // "TB_PATRONYM": null,
+    // "TB_DATEBIRTH": null,
+    // "TB_PASPSERY": null,
+    // "TB_PASPNUMBER": null,
+    // "TB_PASPVIDAN": null,
+    // "TB_PASPDATE": null,
+    // "TB_PRAVA_SERY": null,
+    // "TB_PRAVA_NUMBER": null,
+    // "TB_PRAVA_DATE": null,
+    // "TB_REZIDENT": 1,
+    // "TB_KOD_OKONX": null,
+    // "TB_KOD_OKPO": null,
+    // "TB_KOD_SOATO": null,
+    // "TB_DIREKTOR": "З. ФАЙЗИБОЕВ",
+    // "TB_BUHGALTER": null,
+    // "TB_PHONE1": "+998 (00) 000-00-00",
+    // "TB_PHONE2": null,
+    // "TB_FAX": null,
+    // "TB_ISBANK": 0,
+    // "TB_ORGTYPE": 6,
+    // "TB_ORGNAME": "PISKENT TRANS BIZNES\" MCHJ",
+    // "TB_ORGMFO": 774,
+    // "TB_ORGBANK": "ДАТ ХАЛК БАНК ПИСКЕНТ ФИЛИАЛИ",
+    // "TB_ORGSCHET": 2.0208000800499462e+19,
+    // "TB_COUNTRY": 182,
+    // "TB_OBLAST": 11,
+    // "TB_RAYON": 1103,
+    // "TB_ULICA": "Pskent shahri, X.XAYDAROV",
+    // "TB_DOM": 27,
+    // "TB_KV": null,
+    // "TB_OSTATOK": "0,00",
+    // "TB_OST_NA_DATU": null,
+    // "TB_FIZYUR": 1,
+    // "TB_OLD": 0,
+    // "TB_EMAIL": null,
+    // "TB_POCHTA": null,
+    // "TB_SITE": null,
+    // "TB_BASIS": "УСТАВА",
+    // "TB_SEX": null,
+    // "USER_ID": 2706,
+    // "CREATED_DATE": null,
+    // "MODIFIED_DATE": null,
+    // "MOD_USER": null,
+    // "TB_CHP": 0,
+    // "TB_INPS": null,
+    // "TB_CERTIFICATE": null,
+    // "TB_CERT_BEGIN": null,
+    // "TB_CERT_END": null,
+    // "TB_INVESTOR": 0,
+    // "TB_KOD_OKED": null,
+    // "TB_SCORING": null,
+    // "TB_CREDIT_NUMBER": null,
+    // "TB_PINFL": null
+})
+Client.sync();
+module.exports = Client;
